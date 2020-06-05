@@ -123,8 +123,8 @@ def main_menu():
     screen.blit(mainMenu, (0, 0))
     # game start and how to play texts
     message_dispaly("Welcome to Space Defense!",56,width/2,250,white)
-    message_dispaly("use arrows to move",32,width/2,325,dark_yellow)
-    message_dispaly("use space bar to shoot",32,width/2,375,dark_yellow)
+    message_dispaly("< use arrows to move >",32,width/2,325,dark_yellow)
+    message_dispaly("< use space bar to shoot >",32,width/2,375,dark_yellow)
     # main menu is active
     intro = True
     
@@ -342,6 +342,11 @@ def game_loop():
 # game pause
 def paused():
 
+    global show_score
+    global show_lives
+    # show score and lives while paused
+    show_score(10, 10)
+    show_lives(width-130,10)
     # paused texts
     message_dispaly("paused",100,(width/2),(200),white)
     # actions while game is paused
@@ -403,6 +408,8 @@ def game_over():
         # buttons with action
         button("restart",150,450,100,50,dark_cyan,cyan,game_loop)
         button("menu",550,450,100,50,dark_yellow,yellow,main_menu)
+        # show score after game over
+        show_score(10, 10)
         # game over text
         message_dispaly("GAME OVER",100,width/2,height/2,white)
 
